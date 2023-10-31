@@ -46,8 +46,6 @@ const SignUpForm = () => {
     }
   }
 
-  console.log(formFields)
-
   return (
     <div className="sign-up-container">
       <h2>Don't have an account?</h2>
@@ -93,7 +91,7 @@ const SignUpForm = () => {
             value: confirmPassword,
           }}
         />
-        <Button type="submit">Sign me Up</Button>
+        <Button buttonType='google' type="submit">Sign me Up</Button>
       </form>
     </div>
   )

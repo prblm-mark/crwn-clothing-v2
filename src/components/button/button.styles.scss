@@ -1,11 +1,17 @@
+.buttons-container {
+display: flex;
+justify-content: flex-start;
+gap: .5rem;
+}
+
 .button-container {
   min-width: 165px;
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;
   line-height: 50px;
-  padding: 0 35px 0 35px;
-  font-size: 15px;
+  padding: 0 1.5em 0 1.5em;
+  font-size: 12px;
   background-color: black;
   color: white;
   text-transform: uppercase;
