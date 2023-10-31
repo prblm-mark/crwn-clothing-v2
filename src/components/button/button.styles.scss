@@ -1,11 +1,16 @@
 .buttons-container {
-display: flex;
-justify-content: flex-start;
-gap: .5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: stretch;
+  gap: 0.5rem;
+
+  button:first-of-type {
+    width: 100%;
+  }
 }
 
 .button-container {
-  min-width: 165px;
+  flex-grow: 1;
   width: auto;
   height: 50px;
   letter-spacing: 0.5px;
@@ -15,7 +20,7 @@ gap: .5rem;
   background-color: black;
   color: white;
   text-transform: uppercase;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-weight: bolder;
   border: none;
   cursor: pointer;

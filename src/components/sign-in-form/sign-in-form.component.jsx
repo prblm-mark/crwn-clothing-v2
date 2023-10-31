@@ -58,11 +58,20 @@ const SignInForm = () => {
       // Reset Form
       setFormFields(defaultFormFields)
     } catch (error) {
-      console.log(error, error.code)
+      switch(error.code){
+        case 'auth/wrong-password':
+            alert('Wrong password for user')
+            break
+        case 'auth/user-not-found':
+        alert('User not found with this email')
+        break
+        default:
+            alert('Mmm there seems to be a problem')
+      }
     }
   }
   return (
-    <div>
+    <div className='sign-in-container'>
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -88,10 +97,10 @@ const SignInForm = () => {
         />
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button onClick={signInWithGoogle} buttonType="google">
+          <Button type='button' onClick={signInWithGoogle} buttonType="google">
             Sign In with Google
           </Button>
-          <Button onClick={signInWithGoogleRedirect} buttonType="inverted">
+          <Button type='button' onClick={signInWithGoogleRedirect} buttonType="inverted">
             Sign In On Google
           </Button>
         </div>
