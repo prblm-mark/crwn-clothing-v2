@@ -20,6 +20,7 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields)
   const { email, password } = formFields
 
+
   // Use effect for sign in with google redirect
   useEffect(() => {
     async function getRedirect() {
@@ -33,8 +34,7 @@ const SignInForm = () => {
 
   // Sign in with Google Pop up
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup()
-    createUserRecord(user)
+    await signInWithGooglePopup()
   }
 
   // Handle change event on inputs
@@ -50,28 +50,25 @@ const SignInForm = () => {
     // Sign in user with email
     try {
       const { user } = await signInUser(email, password)
-      if (user) {
-        const { email, uid } = user
-        console.log(email, uid)
-      }
+      
 
       // Reset Form
       setFormFields(defaultFormFields)
     } catch (error) {
-      switch(error.code){
+      switch (error.code) {
         case 'auth/wrong-password':
-            alert('Wrong password for user')
-            break
+          alert('Wrong password for user')
+          break
         case 'auth/user-not-found':
-        alert('User not found with this email')
-        break
+          alert('User not found with this email')
+          break
         default:
-            alert('Mmm there seems to be a problem')
+          alert('Mmm there seems to be a problem')
       }
     }
   }
   return (
-    <div className='sign-in-container'>
+    <div className="sign-in-container">
       <h2>Already have an account?</h2>
       <span>Sign in with your email and password</span>
       <form onSubmit={handleSubmit}>
@@ -97,10 +94,14 @@ const SignInForm = () => {
         />
         <div className="buttons-container">
           <Button type="submit">Sign In</Button>
-          <Button type='button' onClick={signInWithGoogle} buttonType="google">
+          <Button type="button" onClick={signInWithGoogle} buttonType="google">
             Sign In with Google
           </Button>
-          <Button type='button' onClick={signInWithGoogleRedirect} buttonType="inverted">
+          <Button
+            type="button"
+            onClick={signInWithGoogleRedirect}
+            buttonType="inverted"
+          >
             Sign In On Google
           </Button>
         </div>

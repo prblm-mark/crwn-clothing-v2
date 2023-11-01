@@ -7,7 +7,8 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut,
 } from 'firebase/auth'
 
 const firebaseConfig = {
@@ -70,16 +71,8 @@ export const signInUser = async (email, password) => {
   return await signInWithEmailAndPassword(auth, email, password)
 }
 
-// const userState = () => {
-//   return new Promise((resolve, reject) => {
-//     const unsubscribe = onAuthStateChanged(
-//       getAuth(),
-//       (userFirebase) => {
-//         unsubscribe()
-//         resolve(userFirebase)
-//       },
-//       reject,
-//     )
-//   })
-// }
-// export { firebaseApp, db, userState }
+// Sign out user
+export const signOutUser = async () => await signOut(auth)
+
+// Auth state change
+export const userStateChanged = (callback) => onAuthStateChanged(auth, callback)
